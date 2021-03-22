@@ -4,8 +4,8 @@
 // @version      0.2
 // @description  Calculates how many levels you need to reach the next combat level!
 // @author       martijnd
-// @match		 https://*.melvoridle.com/*
-// @exclude		 https://wiki.melvoridle.com*
+// @match		     https://*.melvoridle.com/*
+// @exclude		   https://wiki.melvoridle.com*
 // @noframes
 // @grant        none
 // ==/UserScript==
