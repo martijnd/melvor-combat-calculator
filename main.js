@@ -2,7 +2,7 @@
 // @name         Melvor Combat Calculator
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  Calculates how many levels you need to reach the next combat level!
 // @author       martijnd
 // @match		 https://*.melvoridle.com/*
 // @exclude		 https://wiki.melvoridle.com*
