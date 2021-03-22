@@ -1,4 +1,4 @@
-# melvor-combat-calculator
+# Melvor Combat Calculator
 This is a simple add-on for [Melvor Idle](https://melvoridle.com/) to show the amount of levels you need to reach the next combat level.
 ## Installation
 5 easy steps.
