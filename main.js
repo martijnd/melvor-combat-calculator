@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Melvor Combat Calculator
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Calculates how many levels you need to reach the next combat level!
 // @author       martijnd
 // @match		 https://*.melvoridle.com/*
@@ -43,9 +43,20 @@ const lvlToXp = Array.from({ length: 200 }, (_, i) => exp.level_to_xp(i));
 
 function appendLvlEl(skillId) {
   const span = document.createElement("span");
-  span.innerText = " +" + getLevelsNeeded(skillId);
+  span.innerText = getLevelsNeeded(skillId);
   span.id = `skill-togo-${skillId}`;
-  span.style.color = "#eb4b36";
+  span.style.position = 'absolute';
+  span.style.top = '4px';
+  span.style.left = '18px';
+  span.style.color = '#fff';
+  span.style.textAlign = 'center';
+  span.style.width = '30px';
+  span.style.height = '30px';
+  span.style.borderRadius = '5px';
+  span.style.padding = '3px';
+  span.style.backgroundColor = '#c52723';
+  span.style.border = '3px solid #fff'
+
   document.getElementById(`skill-nav-name-${skillId}`).append(span);
 }
 
