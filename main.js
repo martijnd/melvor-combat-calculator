@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Melvor Combat Calculator
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Calculates how many levels you need to reach the next combat level!
 // @author       martijnd
 // @match		 https://*.melvoridle.com/*
@@ -22,21 +22,25 @@
     CONSTANTS.skill.Magic,
     CONSTANTS.skill.Prayer,
   ];
-  document
-    .getElementById("nav-skill-tooltip-69")
-    .addEventListener("mouseenter", () => {
-      COMBAT_SKILLS.forEach((skillId) => {
-        appendLvlEl(skillId);
-      });
-    });
 
-  document
-    .getElementById("nav-skill-tooltip-69")
-    .addEventListener("mouseleave", () => {
-      COMBAT_SKILLS.forEach((skillId) => {
-        removeLvlEl(skillId);
+  const interval = setInterval(() => {
+    const element = document.getElementById("nav-skill-tooltip-69");
+    if (element) {
+      element.addEventListener("mouseenter", () => {
+        COMBAT_SKILLS.forEach((skillId) => {
+          appendLvlEl(skillId);
+        });
       });
-    });
+
+      element.addEventListener("mouseleave", () => {
+        COMBAT_SKILLS.forEach((skillId) => {
+          removeLvlEl(skillId);
+        });
+      });
+
+      clearInterval(interval);
+    }
+  }, 1000);
 })();
 
 const lvlToXp = Array.from({ length: 200 }, (_, i) => exp.level_to_xp(i));
@@ -45,17 +49,17 @@ function appendLvlEl(skillId) {
   const span = document.createElement("span");
   span.innerText = getLevelsNeeded(skillId);
   span.id = `skill-togo-${skillId}`;
-  span.style.position = 'absolute';
-  span.style.top = '4px';
-  span.style.left = '18px';
-  span.style.color = '#fff';
-  span.style.textAlign = 'center';
-  span.style.width = '30px';
-  span.style.height = '30px';
-  span.style.borderRadius = '5px';
-  span.style.padding = '3px';
-  span.style.backgroundColor = '#c52723';
-  span.style.border = '3px solid #fff'
+  span.style.position = "absolute";
+  span.style.top = "4px";
+  span.style.left = "18px";
+  span.style.color = "#fff";
+  span.style.textAlign = "center";
+  span.style.width = "30px";
+  span.style.height = "30px";
+  span.style.borderRadius = "5px";
+  span.style.padding = "3px";
+  span.style.backgroundColor = "#5cace5";
+  span.style.border = "3px solid #5cace5";
 
   document.getElementById(`skill-nav-name-${skillId}`).append(span);
 }
